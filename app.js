@@ -2,11 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+const users = require('./routes/users');
+// const books = require('./routes/books');
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(users)
+// app.use(books)
 
 const uri = process.env.ATLAS_URI;
 
