@@ -13,10 +13,10 @@ const createBook = async (req, res) => {
 
 const getBooks = async (req, res) => {
   try {
-    const users = await Book.find();
+    const books = await Book.find();
     res.status(200).json(books);
   }catch (error) {
-   res.status(500).json({error: e.message}) 
+   res.status(500).json({error: error.message}) 
   }
 }
 

@@ -4,12 +4,14 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const users = require('./routes/users');
 const books = require('./routes/books');
+const loans = require('./routes/loans.js');
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(users)
 app.use(books)
+app.use(loans)
 
 const uri = process.env.ATLAS_URI;
 
