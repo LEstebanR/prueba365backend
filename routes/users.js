@@ -7,5 +7,6 @@ const app = express.Router();
 app.post('/users', Controller.createUser);
 app.get('/users', Controller.getUsers);
 app.get('/user/:id', Controller.getUser);
+app.put('/user/:id', Controller.updateUser);
 
 module.exports = app;
