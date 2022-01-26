@@ -7,6 +7,14 @@ const booksSchema = mongoose.Schema(
     },
     author: {
       type: String,
+    },
+    status:{
+      type: String,
+      default: 'available'
+
+    },
+    userID:{
+      type: String,
     }
     
 })
