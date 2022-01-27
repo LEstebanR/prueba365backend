@@ -24,7 +24,7 @@ const getBooks = async (req, res) => {
 const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
-    const user = await User.findByIdAndUpdate(book.user, {$pull: {books: book._id}});
+    const user = await User.findByIdAndUpdate(book.userID, {$pull: {books: book._id}});
     res.status(200).json(book);
   }catch (error) {
     res.status(500).json({error: error.message})
