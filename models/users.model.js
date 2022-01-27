@@ -14,6 +14,7 @@ const userSchema = mongoose.Schema(
     },
     books: {
       type: Array,
+      default: [],
     }
 
 })
