@@ -7,5 +7,6 @@ const app = express.Router();
 app.post('/books', Controller.createBook);
 app.get('/books', Controller.getBooks);
 app.delete('/book/:id', Controller.deleteBook);
+app.get('/book/:id', Controller.getBook);
 
 module.exports = app;

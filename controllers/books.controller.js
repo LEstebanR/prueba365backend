@@ -30,4 +30,13 @@ const deleteBook = async (req, res) => {
   }
 }
 
-module.exports = {createBook, getBooks, deleteBook};
+const getBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    res.status(200).json(book);
+  }catch (error) {
+    res.status(500).json({error: error.message})
+  }
+}
+
+module.exports = {createBook, getBooks, deleteBook, getBook};
