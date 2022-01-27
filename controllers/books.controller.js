@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Book = require('../models/books.model.js');
+const User = require('../models/users.model.js');
 
 const createBook = async (req, res) => {
   try {
@@ -22,8 +23,8 @@ const getBooks = async (req, res) => {
 
 const deleteBook = async (req, res) => {
   try {
-    console.log(req.params.id);
     const book = await Book.findByIdAndDelete(req.params.id);
+    const user = await User.findByIdAndUpdate(book.user, {$pull: {books: book._id}});
     res.status(200).json(book);
   }catch (error) {
     res.status(500).json({error: error.message})
