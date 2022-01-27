@@ -12,7 +12,10 @@ const userSchema = mongoose.Schema(
     tel: {
       type: Number,
     },
-    books: []
+    books: {
+      type: Array,
+    }
+
 })
 
 const User = mongoose.model('User', userSchema);
