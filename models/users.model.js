@@ -11,7 +11,8 @@ const userSchema = mongoose.Schema(
     },
     tel: {
       type: Number,
-    }
+    },
+    books: []
 })
 
 const User = mongoose.model('User', userSchema);

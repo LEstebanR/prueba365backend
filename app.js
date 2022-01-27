@@ -6,6 +6,7 @@ const users = require('./routes/users');
 const books = require('./routes/books');
 const availables = require('./routes/availables.js');
 const unavailables = require('./routes/unavailables.js');
+const loans = require('./routes/loans.js');
 const app = express();
 
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(users)
 app.use(books)
 app.use(availables)
 app.use(unavailables)
+app.use(loans)
 
 
 const uri = process.env.ATLAS_URI;

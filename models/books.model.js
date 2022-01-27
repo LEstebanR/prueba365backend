@@ -16,6 +16,10 @@ const booksSchema = mongoose.Schema(
     userID:{
       type: String,
       default: ""
+    },
+    userName:{
+      type: String,
+      default: ""
     }
     
 })
