@@ -21,4 +21,25 @@ const loanBook = async (req, res) => {
   }
 }
 
-module.exports = { loanBook};
+const returnBook = async (req, res) => {
+  try {
+    const  book = await Book.findByIdAndUpdate(req.body.bookID, {
+      status: 'available',
+      userID: '',
+      userName: ''
+    }, { new: true });
+
+    const user = await User.findByIdAndUpdate(req.body.userID, {
+      $pull: { books: {bookID: req.body.bookID} }
+    }, { new: true });
+    
+    res.status(200).json(book);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+
+
+module.exports = { loanBook, returnBook };
