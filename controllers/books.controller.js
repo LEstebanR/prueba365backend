@@ -20,4 +20,14 @@ const getBooks = async (req, res) => {
   }
 }
 
-module.exports = {createBook, getBooks};
+const deleteBook = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const book = await Book.findByIdAndDelete(req.params.id);
+    res.status(200).json(book);
+  }catch (error) {
+    res.status(500).json({error: error.message})
+  }
+}
+
+module.exports = {createBook, getBooks, deleteBook};
