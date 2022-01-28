@@ -14,7 +14,7 @@ const createBook = async (req, res) => {
 
 const getBooks = async (req, res) => {
   try {
-    const books = await Book.find();
+    const books = await Book.find().sort({name: 1});
     res.status(200).json(books);
   }catch (error) {
    res.status(500).json({error: error.message}) 

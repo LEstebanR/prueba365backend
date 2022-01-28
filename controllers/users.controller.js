@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../models/users.model.js');
+const Book = require('../models/books.model.js');
 
 const createUser = async (req, res) => {
   try {
@@ -13,7 +14,7 @@ const createUser = async (req, res) => {
 
 const getUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().sort({name: 1});
     res.status(200).json(users);
   }catch (error) {
    res.status(500).json({error: error.message}) 
@@ -30,6 +31,7 @@ const getUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
+  
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(user);
@@ -39,8 +41,10 @@ const updateUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
+  console.log(req.body);
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    const user = await User.findByIdAndDelete(req.body.userId);
+    const book = await Book.findByIdAndUpdate(req.body.bookId,  {userName: "User deleted", userID : "" }, {new: true});
     res.status(200).json(user);
   }catch (error) {
     res.status(500).json({error: error.message})
